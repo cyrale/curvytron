@@ -16,13 +16,12 @@ RUN apt-get update && \
     rm -rf /tmp/* && \
     rm -rf /var/tmp/*
 
-RUN git clone https://github.com/Curvytron/curvytron.git .
-
-COPY ./bower.json ${APP_DIRECTORY}
-
-RUN npm install gulp -g && \
+RUN git clone https://github.com/Curvytron/curvytron.git . && \
+    npm install gulp -g && \
     npm install bower -g && \
+    npm install json -g && \
     npm install && \
+    json -I -f bower.json -e 'this.resolutions.angular="1.4.3"' && \
     bower install --allow-root && \
     gulp
 
