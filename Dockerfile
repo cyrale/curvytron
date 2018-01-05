@@ -23,7 +23,7 @@ COPY ./bower.json ${APP_DIRECTORY}
 RUN npm install gulp -g && \
     npm install bower -g && \
     npm install && \
-    bower install --allow-root \
+    bower install --allow-root && \
     gulp
 
 EXPOSE 8080
